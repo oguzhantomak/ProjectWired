@@ -8,7 +8,7 @@ namespace ProjectWired.Core.Services
 {
     public interface IService<TEntity> where TEntity : class
     {
-        Task AddAsync(TEntity entity);
+        Task<TEntity> AddAsync(TEntity entity);
 
         void Remove(TEntity entity);
 

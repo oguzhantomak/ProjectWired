@@ -1,31 +1,27 @@
 using Microsoft.EntityFrameworkCore;
+using ProjectWired.Core.Repositories;
+using ProjectWired.Core.Services;
 using ProjectWired.Core.UnitOfWorks;
 using ProjectWired.Data;
+using ProjectWired.Data.Repositories;
 using ProjectWired.Data.UnitOfWorks;
+using ProjectWired.Service.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped(typeof(IService<>), typeof(Service<>));
+builder.Services.AddScoped<IExamService, ExamService>();
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
-//builder.Services.AddDbContext<WiredDbContext>(options =>
-//{
-//    options.UseNpgsql(builder.Configuration["ConnectionStrings:SqlConStr"].ToString(), o =>
-//    {
-//        o.MigrationsAssembly("ProjectWired.Data");
-//    });
-//});
-
-string connString = builder.Configuration.GetConnectionString("DefaultConnection");
-Console.WriteLine(connString);
 
 builder.Services.AddDbContext<WiredDbContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 
 });
-
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
 

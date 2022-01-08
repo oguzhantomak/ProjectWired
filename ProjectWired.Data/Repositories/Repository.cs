@@ -13,7 +13,7 @@ namespace ProjectWired.Data.Repositories
         protected readonly DbContext _context;
         public readonly DbSet<TEntity> _dbSet;
 
-        public Repository(DbContext context)
+        public Repository(WiredDbContext context)
         {
             _context = context;
             _dbSet = context.Set<TEntity>();
