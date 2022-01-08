@@ -1,0 +1,31 @@
+﻿@model IEnumerable<ProjectWired.Core.Models.Exam>
+@{
+    ViewData["Title"] = "Exam List";
+}
+
+<h1>Exam List</h1>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Başlık</th>
+        <th scope="col">Tarih</th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    @{
+        var mod = Model.ToList();
+    }
+    @for (int i = 1; i <= mod.Count(); i++)
+    {
+        <tr>
+            <th scope="row">@i</th>
+            <td><a href="/home/exam/@mod[i-1].Id">@mod[i-1].ExamHeader</a></td>
+            <td>@mod[i-1].CreatedDate.ToLocalTime()</td>
+            <td><a href="/home/deleteExam/@mod[i-1].Id">Sil</a></td>
+        </tr>
+    }
+    </tbody>
+</table>
+

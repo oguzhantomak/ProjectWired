@@ -37,5 +37,12 @@ namespace ProjectWired.Service.Services
         {
             return await _repository.GetAllAsync();
         }
+
+        public TEntity Update(TEntity entity)
+        {
+            TEntity updatedEntity = _repository.Update(entity);
+            _unitOfWork.Commit();
+            return updatedEntity;
+        }
     }
 }

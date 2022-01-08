@@ -13,5 +13,7 @@ namespace ProjectWired.Core.Repositories
         void Remove(TEntity entity);
 
         Task<IEnumerable<TEntity>> GetAllAsync();
+
+        TEntity Update(TEntity entity);
     }
 }

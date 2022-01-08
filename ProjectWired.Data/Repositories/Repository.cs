@@ -33,5 +33,12 @@ namespace ProjectWired.Data.Repositories
         {
             return await _dbSet.ToListAsync();
         }
+
+        public TEntity Update(TEntity entity)
+        {
+            _context.Entry(entity).State = EntityState.Modified;
+
+            return entity;
+        }
     }
 }

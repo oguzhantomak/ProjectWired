@@ -1,0 +1,65 @@
+﻿@model ProjectWired.Core.Models.Exam
+@{
+    ViewData["Title"] = "Exam";
+}
+
+<h1>@Model.ExamHeader</h1>
+
+<p>@Model.ExamDetail</p>
+
+<div class="row mb-2">
+    @foreach (var item in Model.Questions.OrderBy(x => x.SortOrder))
+    {
+        <div class="col-md-6" name="@item.Id">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <strong class="d-inline-block mb-2 text-primary">@item.SortOrder) @item.QuestionHeader</strong>
+                    @*<h5 class="mb-0">@item.QuestionHeader</h5>*@
+                    <div class="list-group mx-0">
+                        @for (int i = 0; i < item.Choices.Count; i++)
+                        {
+                            var choices = item.Choices.ToList();
+                            <div class="form-check border mb-2 rounded py-3" id="div @choices[i].Id">
+                                <input class="form-check-input m-1" value="@choices[i].Id" type="radio" name="@item.Id" id="@choices[i].Id">
+                                <label class="form-check-label" for="@choices[i].Id">
+                                    @choices[i].ChoiceText
+                                </label>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="col-sm text-center mt-3">
+    <button type="button" class="btn btn-lg btn-primary col-sm-6" onclick="finishExam()">Sınavı Tamamla</button>
+</div>
+
+@section Scripts
+{
+<script>
+    function finishExam() {
+        var pageModel = @Html.Raw(Json.Serialize(@Model.Questions));
+
+        for (var i = 0; i < pageModel.length; i++) {
+
+            var correctAnswer =pageModel[i].correctAnswerId;
+            var userAnswer = $('input[name="'+pageModel[i].id+'"]:checked').val();
+            var divString = "div " + userAnswer;
+            var divv = document.getElementById(divString);
+
+            if (userAnswer == correctAnswer) {
+                divv.style.backgroundColor = "green";
+            } else {
+                divv.style.backgroundColor = "red";
+            }
+        }
+    }
+</script>
+}
+
+
+

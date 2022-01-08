@@ -1,8 +1,317 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model List<Page>
+
+@{
+    ViewData["Title"] = "Wired Ana Sayfa";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <select id="headerList" class="form-select">
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <option value="@i">@Model[i].Header</option>
+
+        }
+    </select>
+    <div class="text-xl-center mt-5">
+        <p id="detail">
+        </p>
+    </div>
+
 </div>
+<div class="container mt-5">
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Soru 1</span>
+        <input type="text" class="form-control headerText" placeholder="Soru 1 başlığını girin." aria-describedby="basic-addon1">
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="input-group">
+                <div class="input-group-text">A</div>
+                <input type="text" class="form-control questionChoiceText1" id="specificSizeInputGroupUsername" >
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="input-group">
+                <div class="input-group-text">B</div>
+                <input type="text" class="form-control questionChoiceText1" id="specificSizeInputGroupUsername" >
+            </div>
+        </div>
+        <div class="col-sm-6 mt-4">
+            <div class="input-group">
+                <div class="input-group-text">C</div>
+                <input type="text" class="form-control questionChoiceText1" id="specificSizeInputGroupUsername" >
+            </div>
+        </div>
+        <div class="col-sm-6 mt-4">
+            <div class="input-group">
+                <div class="input-group-text">D</div>
+                <input type="text" class="form-control questionChoiceText1" id="specificSizeInputGroupUsername" >
+            </div>
+        </div>
+    </div>
+    <div class="container col-sm mt-3">
+        <select class="form-select col-sm-4 CorrectChoiceKey1">
+            <option disabled value="-1" selected>Doğru Cevap seç</option>
+            <option value="0">A</option>
+            <option value="1">B</option>
+            <option value="2">C</option>
+            <option value="3">D</option>
+        </select>
+    </div>
+
+    <hr />
+    <div class="input-group mb-3 mt-5">
+        <span class="input-group-text" id="basic-addon1">Soru 2</span>
+        <input type="text" class="form-control headerText" placeholder="Soru 2 başlığını girin." aria-describedby="basic-addon1">
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="input-group">
+                <div class="input-group-text">A</div>
+                <input type="text" class="form-control questionChoiceText2" id="specificSizeInputGroupUsername" >
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="input-group">
+                <div class="input-group-text">B</div>
+                <input type="text" class="form-control questionChoiceText2" id="specificSizeInputGroupUsername" >
+            </div>
+        </div>
+        <div class="col-sm-6 mt-4">
+            <div class="input-group">
+                <div class="input-group-text">C</div>
+                <input type="text" class="form-control questionChoiceText2" id="specificSizeInputGroupUsername" >
+            </div>
+        </div>
+        <div class="col-sm-6 mt-4">
+            <div class="input-group">
+                <div class="input-group-text">D</div>
+                <input type="text" class="form-control questionChoiceText2" id="specificSizeInputGroupUsername" >
+            </div>
+        </div>
+    </div>
+    <div class="container col-sm mt-3">
+        <select class=" form-select col-sm-4 CorrectChoiceKey2">
+            <option disabled value="-1" selected>Doğru Cevap seç</option>
+            <option value="0">A</option>
+            <option value="1">B</option>
+            <option value="2">C</option>
+            <option value="3">D</option>
+        </select>
+    </div>
+
+
+    <hr />
+    <div class="input-group mb-3 mt-5">
+        <span class="input-group-text" id="basic-addon1">Soru 3</span>
+        <input type="text" class="form-control headerText" placeholder="Soru 3 başlığını girin." aria-describedby="basic-addon1">
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="input-group">
+                <div class="input-group-text">A</div>
+                <input type="text" class="form-control questionChoiceText3" id="specificSizeInputGroupUsername" >
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="input-group">
+                <div class="input-group-text">B</div>
+                <input type="text" class="form-control questionChoiceText3" id="specificSizeInputGroupUsername" >
+            </div>
+        </div>
+        <div class="col-sm-6 mt-4">
+            <div class="input-group">
+                <div class="input-group-text">C</div>
+                <input type="text" class="form-control questionChoiceText3" id="specificSizeInputGroupUsername" >
+            </div>
+        </div>
+        <div class="col-sm-6 mt-4">
+            <div class="input-group">
+                <div class="input-group-text">D</div>
+                <input type="text" class="form-control questionChoiceText3" id="specificSizeInputGroupUsername" >
+            </div>
+        </div>
+    </div>
+    <div class="container col-sm mt-3">
+        <select class=" form-select col-sm-4 CorrectChoiceKey3">
+            <option disabled value="-1" selected>Doğru Cevap seç</option>
+            <option value="0">A</option>
+            <option value="1">B</option>
+            <option value="2">C</option>
+            <option value="3">D</option>
+        </select>
+    </div>
+
+    <hr />
+    <div class="input-group mb-3 mt-5">
+        <span class="input-group-text" id="basic-addon1">Soru 4</span>
+        <input type="text" class="form-control headerText" placeholder="Soru 4 başlığını girin." aria-describedby="basic-addon1">
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="input-group">
+                <div class="input-group-text">A</div>
+                <input type="text" class="form-control questionChoiceText4" id="specificSizeInputGroupUsername" >
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="input-group">
+                <div class="input-group-text">B</div>
+                <input type="text" class="form-control questionChoiceText4" id="specificSizeInputGroupUsername" >
+            </div>
+        </div>
+        <div class="col-sm-6 mt-4">
+            <div class="input-group">
+                <div class="input-group-text">C</div>
+                <input type="text" class="form-control questionChoiceText4" id="specificSizeInputGroupUsername" >
+            </div>
+        </div>
+        <div class="col-sm-6 mt-4">
+            <div class="input-group">
+                <div class="input-group-text">D</div>
+                <input type="text" class="form-control questionChoiceText4" id="specificSizeInputGroupUsername" >
+            </div>
+        </div>
+    </div>
+    <div class="container col-sm mt-3">
+        <select class=" form-select col-sm-4 CorrectChoiceKey4">
+            <option disabled value="-1" selected>Doğru Cevap seç</option>
+            <option value="0">A</option>
+            <option value="1">B</option>
+            <option value="2">C</option>
+            <option value="3">D</option>
+        </select>
+    </div>
+</div>
+
+<div class="col-sm text-center mt-3">
+    <button type="button" class="btn btn-lg btn-primary col-sm-6" onclick="saveExam()">Sınav Oluştur</button>
+</div>
+
+@section Scripts
+{
+    <script>
+        function getDetail() {
+            var optionVal = $('#headerList option:selected').val();
+            var pageModel = @Html.Raw(Json.Serialize(@Model));
+            $('#detail').text(pageModel[optionVal].detail);
+        }
+
+        function saveExam() {
+
+            var examHeader = $("#headerList option:selected").text();
+            var examDetail = $('#detail').text();
+
+            var questions = [];
+            var counter = 1;
+            var CorrectChoiceKeyValue = "";
+
+
+            $('.headerText').each(function() {
+                var choices = [];
+                var choiceCounter = 1;
+
+
+                if (counter == 1) {
+                    $('.questionChoiceText1').each(function() {
+                        var choice = {
+                            ChoiceText: $(this).val(),
+                            SortOrder:choiceCounter
+                        }
+                        choices.push(choice);
+                        choiceCounter++;
+                    });
+
+                    CorrectChoiceKeyValue = $('.CorrectChoiceKey1 option:selected').val();
+                }
+                else if (counter == 2) {
+                    $('.questionChoiceText2').each(function() {
+                        var choice = {
+                            ChoiceText: $(this).val(),
+                            SortOrder:choiceCounter
+
+                        }
+                        choices.push(choice);
+                        choiceCounter++;
+
+                    });
+
+                    CorrectChoiceKeyValue = $('.CorrectChoiceKey2 option:selected').val();
+
+                }
+                else if (counter == 3) {
+                    $('.questionChoiceText3').each(function() {
+                        var choice = {
+                            ChoiceText: $(this).val(),
+                            SortOrder:choiceCounter
+
+                        }
+                        choices.push(choice);
+                        choiceCounter++;
+
+                    });
+
+                    CorrectChoiceKeyValue = $('.CorrectChoiceKey3 option:selected').val();
+
+                }
+                else if (counter == 4) {
+                    $('.questionChoiceText4').each(function() {
+                        var choice = {
+                            ChoiceText: $(this).val(),
+                            SortOrder:choiceCounter
+
+                        }
+                        choices.push(choice);
+                        choiceCounter++;
+
+                    });
+
+                    CorrectChoiceKeyValue = $('.CorrectChoiceKey4 option:selected').val();
+
+                }
+
+                var question = {
+                    QuestionHeader: $(this).val(),
+                    Choices:choices,
+                    CorrectChoiceKey:CorrectChoiceKeyValue,
+                    SortOrder: counter
+                }
+
+                questions.push(question);
+                counter++;
+            });
+
+            var model = {
+                ExamHeader: examHeader,
+                ExamDetail: examDetail,
+                Questions:questions
+            }
+
+            $.ajax({
+                url: '@Url.Action("CreateExam", "Home")',
+                type: 'POST',
+                data: JSON.stringify(model),
+                //dataType: "json",
+                contentType: 'application/json; charset=utf-8',
+                success: function(data) {
+                    console.log("Başarılı");
+                    alert("Sınav başarılı bir şekilde eklendi!");
+                    window.location.reload();
+                },
+                error: function() {
+                    console.log("Başarısız");
+                    window.location.reload();
+                }
+            });
+        }
+
+        $(document).ready(function() {
+            getDetail();
+
+            $("#headerList").change(function() {
+                getDetail();
+
+            });
+        });
+    </script>
+}

@@ -4,14 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectWired.Core.Models
+namespace ProjectWired.Core.DTOs
 {
-    public class Choice : BaseClass
+    public class CreateChoice
     {
         public string ChoiceText { get; set; }
-
-        public int QuestionId { get; set; }
-        public virtual Question Question { get; set; }
 
         public int SortOrder { get; set; }
     }

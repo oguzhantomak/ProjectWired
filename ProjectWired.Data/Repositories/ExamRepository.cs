@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using ProjectWired.Core.DTOs;
 using ProjectWired.Core.Models;
 using ProjectWired.Core.Repositories;
 
@@ -24,5 +25,10 @@ namespace ProjectWired.Data.Repositories
                 .SingleOrDefaultAsync(x => x.Id == examId);
             
         }
+
+        //public async Task<Exam> CreateExamWithQuestionsAndChoices(CreateExamDto model)
+        //{
+            
+        //}
     }
 }
