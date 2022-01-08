@@ -43,19 +43,25 @@
 <script>
     function finishExam() {
         var pageModel = @Html.Raw(Json.Serialize(@Model.Questions));
-
         for (var i = 0; i < pageModel.length; i++) {
 
-            var correctAnswer =pageModel[i].correctAnswerId;
-            var userAnswer = $('input[name="'+pageModel[i].id+'"]:checked').val();
-            var divString = "div " + userAnswer;
-            var divv = document.getElementById(divString);
 
-            if (userAnswer == correctAnswer) {
-                divv.style.backgroundColor = "green";
-            } else {
-                divv.style.backgroundColor = "red";
+
+            var correctAnswer = pageModel[i].correctAnswerId;
+            var userAnswer = $('input[name="'+pageModel[i].id+'"]:checked').val();
+
+            var divString = "div " + userAnswer;
+            var divElement = document.getElementById(divString);
+            if (userAnswer != undefined) {
+                if (userAnswer == correctAnswer) {
+                    divElement.style.backgroundColor = "green";
+                    $('input[name="'+pageModel[i].id+'"]').attr("disabled",true);
+                } else {
+                    divElement.style.backgroundColor = "red";
+                    $('input[name="'+pageModel[i].id+'"]').attr("disabled",true);
+                }
             }
+
         }
     }
 </script>
