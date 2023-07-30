@@ -1,4 +1,6 @@
 using System.Text.Json.Serialization;
+using Hangfire;
+using Hangfire.PostgreSql;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ProjectWired.Core.Models;
@@ -10,6 +12,10 @@ using ProjectWired.Data.Repositories;
 using ProjectWired.Data.UnitOfWorks;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddHangfire(x =>
+    x.UsePostgreSqlStorage(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddHangfireServer();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -51,6 +57,9 @@ builder.Services.ConfigureApplicationCookie(opts =>
 
 var app = builder.Build();
 
+app.UseHangfireDashboard();
+BackgroundJob.Enqueue(() => Console.WriteLine("Hello world from Hangfire!"));
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -76,5 +85,9 @@ app.MapControllerRoute(
     name: "exam",
     pattern: "{controller=Home}/{action=Exam}/{id?}");
 
-
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+    endpoints.MapHangfireDashboard();
+});
 app.Run();
